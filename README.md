@@ -53,19 +53,21 @@ If you have multiple USB cameras, you can specify which camera should be used.
 `$ python video-recorder.py -h`
 
 ```
-usage: video-recorder.py [-h] [-c {0,1,2,3}] [-t {utc,local}] target_dir
+usage: video-recorder.py [-h] [-v] [-c {0,1,2,3}] [-t {utc,local}] target_dir
 
-Video Recorder ver 0.1
+Video Recorder ver 0.2 by Jaerock Kwon, 2021
 
 positional arguments:
 
  target_dir      target directory name
 
-optional arguments: -h, --help      show this help message and exit
-
- -c {0,1,2,3}, --camera_id {0,1,2,3}            camera id number
-
- -t {utc,local}, --time_zone {utc,local}            time zone: default utc
+optional arguments:
+ -h, --help      show this help message and exit
+ -v, --verbose   print filenames
+ -c {0,1,2,3}, --camera_id {0,1,2,3}
+                 camera id number
+ -t {utc,local}, --time_zone {utc,local}
+                 time zone: default utc
 ```
 
 ## Data Folder Structure
