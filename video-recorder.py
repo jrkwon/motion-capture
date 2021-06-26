@@ -36,13 +36,13 @@ class VideoRecoder():
         print("Directory {} created.".format(path))
         return path
     
-def main(target_dir, camera_id, time_zone):
+def main(verbose, target_dir, camera_id, time_zone):
     # define a video capture object
     vr = VideoRecoder(target_dir, camera_id, time_zone)
 
     path = vr.create_directory(target_dir)
         
-    print("Press 'q' to stop.")
+    print("Start recording... Press 'q' to stop.")
     while(True):
           
         # Capture the video frame
@@ -52,9 +52,10 @@ def main(target_dir, camera_id, time_zone):
         # Display the resulting frame
         filename = vr.get_time_stamp() + vr.image_ext
         
-        cv2.imshow('Video', frame)
+        cv2.imshow('Camera ' + str(camera_id), frame)
         file_path = os.path.join(path, filename)
-        print(file_path)
+        if verbose:
+            print(file_path)
         cv2.imwrite(file_path, frame)
           
         # the 'q' button is set as the
@@ -67,10 +68,13 @@ def main(target_dir, camera_id, time_zone):
     vr.video.release()
     # Destroy all the windows
     cv2.destroyAllWindows()
-
+    print("Done recording.")
+    print("Directory {} has all captured images.".format(path))
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Video Recorder ver 0.1')
+    parser = argparse.ArgumentParser(description='Video Recorder ver 0.2 by Jaerock Kwon, 2021')
+    parser.add_argument("-v", "--verbose", action="store_true",
+                    help="print filenames")
     parser.add_argument("-c", "--camera_id", default=0, choices=[0, 1, 2, 3], 
                         help="camera id number")
     parser.add_argument("-t", "--time_zone", default="utc", 
@@ -79,4 +83,4 @@ if __name__ == '__main__':
     parser.add_argument("target_dir", type=str, help="target directory name")
     args = parser.parse_args()
     
-    main(args.target_dir, args.camera_id, args.time_zone)
+    main(args.verbose, args.target_dir, args.camera_id, args.time_zone)
