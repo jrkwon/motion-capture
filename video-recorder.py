@@ -75,10 +75,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Video Recorder ver 0.2 by Jaerock Kwon, 2021')
     parser.add_argument("-v", "--verbose", action="store_true",
                     help="print filenames")
-    parser.add_argument("-c", "--camera_id", default=0, choices=[0, 1, 2, 3], 
+    parser.add_argument("-c", "--camera_id", type=int, default=0, choices=(0, 1, 2, 3), 
                         help="camera id number")
     parser.add_argument("-t", "--time_zone", default="utc", 
-                        choices=["utc", "local"], 
+                        choices=("utc", "local"), 
                         help="time zone: default utc")
     parser.add_argument("target_dir", type=str, help="target directory name")
     args = parser.parse_args()
