@@ -15,9 +15,9 @@ import os
 import argparse
 
 class VideoRecoder():
-    RES_1080P = 0
-    RES_720P = 1
-    RES_480P = 2
+    RES_480P  = 0
+    RES_720P  = 1
+    RES_1080P = 2
     
     
     def __init__(self, target_dir, camera_id, time_zone):
