@@ -112,7 +112,7 @@ def main(resolution, verbose, target_dir, camera_id, time_zone):
     print("Directory {} has all captured images.".format(path))
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Video Recorder ver 0.3 by Jaerock Kwon, 2021')
+    parser = argparse.ArgumentParser(description='Video Recorder ver 0.3 by Jaerock Kwon, 2022')
     parser.add_argument("-r", "--resolution", type=int, default=0, choices=(0, 1, 2),
                     help="resolution id: 0:640x480, 1:1280x720, 2:1920x1080")
     parser.add_argument("-v", "--verbose", action="store_true",
